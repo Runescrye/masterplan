@@ -1535,7 +1535,7 @@ namespace Masterplan.Data
 
 	#region Report Table
 
-	enum ReportType
+	public enum ReportType
 	{
 		Time,
 		DamageToEnemies,
@@ -1543,14 +1543,14 @@ namespace Masterplan.Data
 		Movement
 	}
 
-	enum BreakdownType
+	public enum BreakdownType
 	{
 		Individual,
 		Controller,
 		Faction
 	}
 
-	class ReportTable
+	public class ReportTable
 	{
 		public ReportType ReportType
 		{
@@ -1622,7 +1622,7 @@ namespace Masterplan.Data
 		}
 	}
 
-	class ReportRow : IComparable<ReportRow>
+	public class ReportRow : IComparable<ReportRow>
 	{
 		public string Heading
 		{

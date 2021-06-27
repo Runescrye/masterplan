@@ -21,7 +21,7 @@ using Masterplan.Tools.Generators;
 
 namespace Masterplan.UI
 {
-	partial class MainForm : Form
+	public partial class MainForm : Form
 	{
 		public enum ViewType
 		{

@@ -87,7 +87,12 @@ namespace Masterplan.Data
 		/// <summary>
 		/// Solo.
 		/// </summary>
-		Solo
+		Solo,
+
+		/// <summary>
+		/// Minion.
+		/// </summary>
+		Minion
 	}
 
 	/// <summary>
@@ -101,6 +106,9 @@ namespace Masterplan.Data
 		/// </summary>
 		/// <returns>Returns the copy.</returns>
 		IRole Copy();
+
+		RoleType Type { get; set; }
+		RoleFlag Flag { get; set; }
 	}
 
 	/// <summary>
@@ -142,6 +150,16 @@ namespace Masterplan.Data
 
 			return m;
 		}
+
+		/// <summary>
+		/// Gets or sets the role modifier (elite / solo).
+		/// </summary>
+		public RoleFlag Flag
+		{
+			get { return fFlag; }
+			set { fFlag = value; }
+		}
+		RoleFlag fFlag = RoleFlag.Minion;
 
 		/// <summary>
 		/// Minion

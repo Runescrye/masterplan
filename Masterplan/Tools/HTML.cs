@@ -14,14 +14,14 @@ using Masterplan.Properties;
 
 namespace Masterplan.Tools
 {
-	enum DisplaySize
+	public enum DisplaySize
 	{
 		Small,
 		Medium,
 		Large
 	}
 
-	class HTML
+	public class HTML
 	{
 		//static Markdown fMarkdown = new Markdown();
 

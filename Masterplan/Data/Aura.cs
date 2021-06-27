@@ -68,7 +68,7 @@ namespace Masterplan.Data
 			return a;
 		}
 
-		internal string Description
+		public string Description
 		{
 			get
 			{
@@ -79,7 +79,7 @@ namespace Masterplan.Data
 			}
 		}
 
-		internal int Radius
+		public int Radius
 		{
 			get
 			{
