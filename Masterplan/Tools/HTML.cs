@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 
 using Utils;
+using MarkdownSharp;
 
 using Masterplan.Data;
 using Masterplan.Tools.Generators;
@@ -23,7 +24,7 @@ namespace Masterplan.Tools
 
 	public class HTML
 	{
-		//static Markdown fMarkdown = new Markdown();
+		static Markdown fMarkdown = new Markdown();
 
 		#region Predefined
 
@@ -907,7 +908,7 @@ namespace Masterplan.Tools
 				string readaloud = Process(pp.ReadAloud, false);
 				if (readaloud != "")
 				{
-					//readaloud = fMarkdown.Transform(readaloud);
+					readaloud = fMarkdown.Transform(readaloud);
 					readaloud = readaloud.Replace("<p>", "<p class=readaloud>");
 					lines.Add(readaloud);
 				}
@@ -915,7 +916,7 @@ namespace Masterplan.Tools
 				string details = Process(pp.Details, false);
 				if (details != "")
 				{
-					//details = fMarkdown.Transform(details);
+					details = fMarkdown.Transform(details);
 					lines.Add(details);
 				}
 
@@ -1021,7 +1022,7 @@ namespace Masterplan.Tools
 						lines.Add("<P>" + parent_point.Date + "</P>");
 
 					if (parent_point.Details != "")
-						lines.Add("<P>" + Process(parent_point.Details, false) + "</P>");
+						lines.Add("<P>" + fMarkdown.Transform(Process(parent_point.Details, false)) + "</P>");
 				}
 				else
 				{
@@ -1422,7 +1423,7 @@ namespace Masterplan.Tools
 				string str = Process(en.Contents, false);
                 if (str != "")
                 {
-					//str = fMarkdown.Transform(str);
+					str = fMarkdown.Transform(str);
 					str = str.Replace("<p>", "<p class=encounter_note>");
                     lines.Add(str);
                 }
@@ -1455,7 +1456,7 @@ namespace Masterplan.Tools
                 string details = Process(bg.Details, false);
                 if (details != "")
                 {
-					//details = fMarkdown.Transform(details);
+					details = fMarkdown.Transform(details);
 					details = details.Replace("<p>", "<p class=background>");
                     lines.Add(details);
                 }
@@ -1492,7 +1493,7 @@ namespace Masterplan.Tools
 				{
 					lines.Add("<H3>" + title + "</H3>");
 
-					//details = fMarkdown.Transform(details);
+					details = fMarkdown.Transform(details);
 					details = details.Replace("<p>", "<p class=background>");
 					lines.Add(details);
 				}
@@ -1768,7 +1769,7 @@ namespace Masterplan.Tools
 						Background bg = item as Background;
 
 						string details = Process(bg.Details, false);
-						//details = fMarkdown.Transform(details);
+						details = fMarkdown.Transform(details);
 						details = details.Replace("<p>", "<p class=background>");
 
 						lines.Add("<H3>" + Process(bg.Title, true) + "</H3>");
@@ -2294,7 +2295,7 @@ namespace Masterplan.Tools
 				else
 				{
 					string details = Process(goal.Details, true);
-					// = fMarkdown.Transform(details);
+					details = fMarkdown.Transform(details);
 
 					lines.Add(details);
 				}
@@ -3145,7 +3146,7 @@ namespace Masterplan.Tools
 				details = details.Substring(0, start_index) + link + details.Substring(end_index + end.Length);
 			}
 
-			//details = fMarkdown.Transform(details);
+			details = fMarkdown.Transform(details);
 			details = details.Replace("<p>", "<p class=encyclopedia_entry>");
 
 			return details;

@@ -760,9 +760,11 @@ namespace Masterplan.Data
 			foreach (string line in lines)
 			{
 				if (str != "")
+				{
 					str += "<BR>";
+				}
 
-				str += line;
+				str += line.Replace(Environment.NewLine, "<BR>");
 			}
 
 			if (str == "")
